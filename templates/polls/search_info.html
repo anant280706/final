@@ -1,0 +1,214 @@
+{% extends 'polls/base.html' %}
+{% block title %}
+<title>Donor Details</title>
+{% endblock %}
+
+{% block contents %}
+
+<style>
+
+/* 🔥 BACKGROUND */
+.profile-bg {
+  background: linear-gradient(to right, #ffdde1, #ee9ca7);
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔥 CARD */
+.profile-card {
+  background: #fff;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+}
+
+/* 🔥 TITLE */
+.profile-title {
+  text-align: center;
+  color: #d9534f;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* 🔥 ROW STYLE */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+/* 🔥 LABEL */
+.info-label {
+  font-weight: bold;
+  color: #d9534f;
+}
+
+/* 🔥 VALUE */
+.info-value {
+  color: #333;
+}
+
+/* 🔥 BADGE */
+.blood-badge {
+  background: #d9534f;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* 🔥 CONTACT BUTTONS */
+.contact-box {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-call {
+  background: #28a745;
+  color: white;
+  border-radius: 25px;
+  padding: 10px 20px;
+  margin: 5px;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: white;
+  border-radius: 25px;
+  padding: 10px 20px;
+  margin: 5px;
+}
+
+</style>
+
+<div class="profile-bg">
+
+  <div class="profile-card">
+
+    <!-- 🔥 TITLE -->
+    <h2 class="profile-title">
+      🩸 {{details.name | capfirst}} Profile
+    </h2>
+
+    <!-- 🔥 INFO -->
+    <div class="info-row">
+      <span class="info-label">Name</span>
+      <span class="info-value">{{details.name | capfirst}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Father Name</span>
+      <span class="info-value">{{details.father_name | capfirst}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Gender</span>
+      <span class="info-value">{{details.gender | capfirst}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Email</span>
+      <span class="info-value">{{details.email}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Phone</span>
+      <span class="info-value">{{details.phone_number}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">State</span>
+      <span class="info-value">{{details.state | capfirst}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">City</span>
+      <span class="info-value">{{details.city | capfirst}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">DOB</span>
+      <span class="info-value">{{details.date_of_birth}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Occupation</span>
+      <span class="info-value">{{details.occupation}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Blood Group</span>
+      <span class="blood-badge">
+        {{details.blood_group | upper}}
+      </span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Address</span>
+      <span class="info-value">{{details.home_address}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Last Donate</span>
+      <span class="info-value">{{details.last_donate_date}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Disease</span>
+      <span class="info-value">{{details.any_disease | capfirst}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Allergies</span>
+      <span class="info-value">{{details.allergies | capfirst}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Cardiac</span>
+      <span class="info-value">{{details.cardiac | capfirst}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Bleeding Disorder</span>
+      <span class="info-value">{{details.bleeding_disorder | capfirst}}</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">HIV/HCV</span>
+      <span class="info-value">{{details.hbsAg_hcv_hIV | capfirst}}</span>
+    </div>
+
+    <!-- 🔥 CONTACT BUTTONS -->
+    <div class="contact-box">
+
+ {% with phone=details.phone_number|cut:" " %}
+  
+<a href="tel:+91{{phone}}" class="btn btn-call">
+  📞 Call
+</a>
+
+<a href="https://wa.me/91{{phone}}?text=Hello%20I%20need%20blood%20donation%20help" 
+   target="_blank" 
+   class="btn btn-whatsapp">
+  💬 WhatsApp
+</a>
+
+{% endwith %}
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+<style>
+body {
+  background: linear-gradient(135deg, #b30000, #ff4d4d);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Center Box */
+.login-container {
+  width: 400px;
+  margin: 80px auto;
+  padding: 40px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  color: white;
+}
+
+/* Title */
+.login-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Input Fields */
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 15px;
+}
+
+/* Button */
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #fff;
+  color: #b30000;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.login-container button:hover {
+  background: #ffd6d6;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="login-container">
+  <h1>🔐 Admin Login</h1>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+
+    <button type="submit">Login</button>
+  </form>
+</div>
+
+{% endblock %}

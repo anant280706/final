@@ -1,0 +1,655 @@
+{% load static %}
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="{% static 'css/all.min.css' %}" rel="stylesheet" />
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link rel="shortcut icon" href="{% static 'images/title.jpg' %}" />
+
+  {% block title %}
+  <title>Home</title>
+  {% endblock %}
+</head>
+
+<style>
+
+/* 🔥 GLOBAL */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* 🔥 HEADER */
+.header-top {
+  background: linear-gradient(135deg, #b30000, #ff4d4d, #ff9999);
+  padding: 18px 10px;
+  text-align: center;
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+
+  /* Glass Effect */
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* 🔥 Glow animation line */
+.header-top::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shine 4s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ❤️ Icon Styling */
+.header-icon {
+  font-size: 28px;
+  margin-right: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+/* ❤️ Heart beat animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* 🔥 NAVBAR UPGRADE */
+.navbar {
+  padding: 4px 30px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+/* NAV LINK MODERN */
+.nav-link {
+  color: #d9534f;
+  font-weight: 600;
+  margin-left: 10px;
+  padding: 5px 18px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  background: linear-gradient(90deg, #ff4d4d, #b30000);
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+/* 🔥 HERO SLIDER */
+.carousel-item {
+  height: 90vh;
+}
+
+.carousel-item img {
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(100%);
+}
+
+.carousel-caption {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-caption h1 {
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-caption p {
+  font-size: 20px;
+  color: #d60000;
+}
+
+/* 🔥 BUTTON STYLE */
+.btn-custom {
+  background: #d9534f;
+  color: white;
+  border-radius: 25px;
+  padding: 10px 25px;
+  transition: 0.3s;
+}
+
+.btn-custom:hover {
+  background: #c9302c;
+}
+
+/* 🔥 SECTION (future use) */
+.section {
+  padding: 60px 20px;
+}
+
+/* 🔥 FOOTER */
+footer {
+  background: linear-gradient(90deg, #d9534f, #c9302c);
+  color: white;
+}
+
+footer p {
+  margin: 0;
+}
+.section {
+  padding: 70px 20px;
+}
+
+img {
+  transition: 0.3s;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+/* 🔥 STATS SECTION */
+.stats-section {
+  background: linear-gradient(90deg, #d9534f, #c9302c);
+  padding: 60px 20px;
+  color: white;
+}
+
+.stat-box {
+  padding: 20px;
+}
+
+.stat-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.counter {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.stat-box p {
+  font-size: 18px;
+}
+/* 🔥 HOW DONATION WORKS SECTION */
+.donation-section {
+  background: linear-gradient(90deg, #f8d7da, #e2e3e5);
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.donation-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #b30000;
+}
+
+.donation-subtitle {
+  color: #555;
+  max-width: 600px;
+  margin: 10px auto 40px;
+}
+
+.step-box {
+  padding: 20px;
+}
+
+.step-icon {
+  font-size: 40px;
+  color: #d9534f;
+  margin-bottom: 15px;
+}
+
+.step-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.step-desc {
+  color: #555;
+}
+.logo-strip {
+  border-bottom: 1px solid #ddd;
+}
+
+.logo-img {
+  height: 60px;
+  margin: 10px 20px;
+  transition: 0.3s;
+  filter: grayscale(100%);
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+</style>
+
+<body>
+
+<!-- 🔥 TOP HEADER -->
+<div class="header-top">
+  <span class="header-icon">🩸</span>
+  Smart Blood Bank & Inventory Management System
+</div>
+<!-- 🔴 NAVBAR (UPGRADED UI, SAME LINKS) -->
+<div class="container-fluid border">
+  <nav class="navbar navbar-expand-lg bg-white">
+
+    <a class="navbar-brand" href="#">
+      <img src="{% static "C:\Users\Disha\Desktop\New folder\BBM\static\images\28463435-c1a6-49c3-8fd1-516eace14558.png" %}" width="150" height="90" />
+    </a>
+
+    <!-- MOBILE TOGGLE -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'donor_registration' %}">
+            Donor Registration
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'search' %}">Search</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/login/?next=/admin/">
+            Admin
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </nav>
+</div>
+
+{% block contents %}
+
+<!-- 🔥 PREMIUM HERO SLIDER (REPLACED CAROUSEL) -->
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+  <div class="carousel-inner">
+
+    <!-- SLIDE 1 -->
+    <div class="carousel-item active">
+      <img src="{% static "C:\Users\Disha\Desktop\New folder\BBM\static\images\2381635.jpg" %}" class="d-block w-100" /><img src="{% static  "C:\Users\Disha\Desktop\New folder\BBM\static\images\Blood-Donation1AR07052020.jpg" %}" class="d-block w-100" />
+      <div class="carousel-caption text-start">
+        <h1 class="fw-bold">Donate Blood ❤️</h1>
+        <p>Save lives with your small effort. Every drop matters.</p>
+        <a href="#" class="btn btn-custom">Become Donor</a>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="carousel-item">
+      <img src="{% static "C:\Users\Disha\Desktop\New folder\BBM\static\images\Venesection-628x356.jpg" %}" class="d-block w-100" />
+      <div class="carousel-caption text-start">
+        <h1 class="fw-bold">Be Someone’s Hero</h1>
+        <p>Your one donation can save multiple lives.</p>
+        <a href="#" class="btn btn-custom">Join Now</a>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="carousel-item">
+      <img src="{% static  "C:\Users\Disha\Desktop\New folder\BBM\static\images\Blood-Donation1AR07052020.jpg" %}" class="d-block w-100" />
+      <div class="carousel-caption text-start">
+        <h1 class="fw-bold">Give Hope</h1>
+        <p>Help someone fight for life today.</p>
+        <a href="#" class="btn btn-custom">Get Started</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BUTTONS -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
+</div>
+<!-- 🔍 SEARCH SECTION -->
+<div class="container section">
+  <div class="row align-items-center">
+
+    <div class="col-md-6 text-center">
+      <img src="{% static "C:\Users\Disha\Desktop\New folder\BBM\static\images\img2.png" %}" class="img-fluid rounded shadow"style="width: 4000px; height: 400px;">
+    </div>
+
+    <div class="col-md-6">
+      <h2 class="text-danger mb-3">Find Blood Donors Easily</h2>
+      <p>
+        Search for available blood donors in your city with just one click.
+        Our system helps you quickly find the right match when you need it most.
+      </p>
+
+      <a href="{% url 'search' %}" class="btn btn-custom mt-3">
+        Search Donor
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- 📝 REGISTRATION SECTION -->
+<div class="container section">
+  <div class="row align-items-center">
+
+    <div class="col-md-6">
+      <h2 class="text-danger mb-3">Become a Blood Donor</h2>
+      <p>
+        Register yourself as a donor and help save lives. Your small effort can
+        make a big difference for someone in need.
+      </p>
+
+      <a href="{% url 'donor_registration' %}" class="btn btn-custom mt-3">
+        Register Now
+      </a>
+    </div>
+
+    <div class="col-md-6 text-center">
+      <img src="{% static "C:\Users\Disha\Desktop\New folder\BBM\static\images\registeration.jpg" %}" class="img-fluid rounded shadow" style="width: 4000px; height: 400px;">
+    </div>
+
+  </div>
+</div>
+<!-- 🔥 ABOUT SLIDER SECTION -->
+<div class="container-fluid section bg-white">
+
+  <h1 class="text-center text-danger mb-5">About Our System</h1>
+
+  <div id="aboutSlider" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+
+      <!-- SLIDE 1 -->
+      <div class="carousel-item active">
+        <div class="row align-items-center">
+
+          <div class="col-md-6 text-center">
+            <img src="{% static "C:\Users\Disha\Desktop\New folder\BBM\static\images\vecteezy_patient-with-doctor-and-nurse_24760222.png" %}" class="img-fluid" style="max-height:300px;">
+          </div>
+
+          <div class="col-md-6">
+            <h3 class="text-danger">Who We Are</h3>
+            <p>
+              Smart Blood Bank System is designed to connect donors and receivers
+              quickly and efficiently. Our goal is to save lives by making blood
+              easily available in emergencies.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="carousel-item">
+        <div class="row align-items-center">
+
+          <div class="col-md-6 text-center">
+            <img src="{% static "C:\Users\Disha\Desktop\New folder\BBM\static\images\vecteezy_blood-donation-volunteer_54484225.png" %}" class="img-fluid" style="max-height:300px;">
+          </div>
+
+          <div class="col-md-6">
+            <h3 class="text-danger">Our Mission</h3>
+            <p>
+              Our mission is to ensure no life is lost due to lack of blood.
+              We aim to build a strong network of donors across cities.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="carousel-item">
+        <div class="row align-items-center">
+
+          <div class="col-md-6 text-center">
+            <img src="{% static "C:\Users\Disha\Desktop\New folder\BBM\static\images\vecteezy_doctor-and-patient-png-graphic-clipart-design_19994556.png" %}" class="img-fluid" style="max-height:300px;">
+          </div>
+
+          <div class="col-md-6">
+            <h3 class="text-danger">Why Choose Us</h3>
+            <p>
+              Fast search, reliable donors, and easy registration make our
+              platform the best solution for blood management.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BUTTONS -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#aboutSlider" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bg-dark rounded-circle"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#aboutSlider" data-bs-slide="next">
+      <span class="carousel-control-next-icon bg-dark rounded-circle"></span>
+    </button>
+
+  </div>
+
+</div>
+<!-- ❤️ HOW DONATION WORKS -->
+<div class="container-fluid donation-section">
+
+  <h2 class="donation-title">How Donation Works</h2>
+  <p class="donation-subtitle">
+    Register, get a quick health check, and donate – a simple process to help save lives.
+  </p>
+
+  <div class="row mt-5">
+
+    <!-- STEP 1 -->
+    <div class="col-md-4">
+      <div class="step-box">
+        <i class="fas fa-user-edit step-icon"></i>
+        <div class="step-title">Registration Process</div>
+        <p class="step-desc">
+          Sign up and schedule your first donation with ease
+        </p>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="col-md-4">
+      <div class="step-box">
+        <i class="fas fa-notes-medical step-icon"></i>
+        <div class="step-title">Health Screening</div>
+        <p class="step-desc">
+          A simple check-up to ensure you're ready to donate
+        </p>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="col-md-4">
+      <div class="step-box">
+        <i class="fas fa-hand-holding-heart step-icon"></i>
+        <div class="step-title">Donation Day</div>
+        <p class="step-desc">
+          Relax as our professional staff guide you through
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- 🔥 HEALTH WEBSITES LOGO STRIP -->
+<div class="logo-strip py-3 bg-light">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap">
+
+    <a href="https://gscbt.net//" target="_blank">
+      <img src="{% static  "C:\Users\Disha\Desktop\New folder\BBM\static\images\GSCBT-logo-3-1 (2).jpg" %}" class="logo-img">
+    </a>
+
+    <a href="https://redcrossgujarat.org/" target="_blank">
+      <img src="{% static  "C:\Users\Disha\Desktop\New folder\BBM\static\images\red_logo_final.jpg" %}" class="logo-img">
+    </a>
+
+    <a href="https://eraktkosh.mohfw.gov.in/BLDAHIMS/bloodbank/transactions/bbpublicindex.html" target="_blank">
+      <img src="{% static "C:\Users\Disha\Desktop\New folder\BBM\static\images\Rakt5.png" %}" class="logo-img">
+    </a>
+
+    <a href=" https://www.bing.com/ck/a?!&&p=fb9b739a71045a98e2b7a75f0163b81427a4208bfc05b6e72566589c5e7e47f0JmltdHM9MTc3NDIyNDAwMA&ptn=3&ver=2&hsh=4&fclid=27eff22a-89c7-6d85-328a-e4f78dc7696c&u=a1aHR0cHM6Ly93d3cuYWhtZWRhYmFkcmVkY3Jvc3MuaW4v&ntb=1" target="_blank">
+      <img src="{% static "C:\Users\Disha\Desktop\New folder\BBM\static\images\title.jpg" %}" class="logo-img">
+    </a>
+
+    
+
+  </div>
+</div>
+{% endblock %}
+
+<!-- 🔥 FOOTER -->
+<footer class="p-3 text-center">
+  <p>© Smart Blood Bank | All Rights Reserved</p>
+</footer>
+
+<script src="{% static 'js/all.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+{% extends 'polls/base.html' %}
+
+{% block title %}
+<title>Donor Details</title>
+{% endblock %}
+
+{% block contents %}
+<style>
+  .borderr {
+    border-radius: 12px;
+    border: 1px solid #d9534f;
+  }
+
+  p b {
+    color: #d9534f;
+    font-size: 20px;
+  }
+
+  p b:hover {
+    text-decoration: underline;
+  }
+  .containers {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+</style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="min-h-screen bg-gradient-to-r from-red-50 to-red-100 flex items-center justify-center p-6">
+
+  <div class="bg-white shadow-2xl rounded-2xl w-full max-w-3xl p-8 border border-red-200">
+
+    <!-- Header -->
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-bold text-red-600">🩸 Blood Bank</h1>
+      <p class="text-gray-500 mt-2">Donor Registration Details</p>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-b mb-6"></div>
+
+    <!-- Details Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+
+      <div><span class="font-semibold text-red-500">Name:</span> {{ forms.name.data|capfirst }}</div>
+      <div><span class="font-semibold text-red-500">Father Name:</span> {{ forms.father_name.data|capfirst }}</div>
+
+      <div><span class="font-semibold text-red-500">Gender:</span> {{ forms.gender.data|capfirst }}</div>
+      <div><span class="font-semibold text-red-500">Email:</span> {{ forms.email.data }}</div>
+
+      <div><span class="font-semibold text-red-500">Phone:</span> {{ forms.phone_number.data }}</div>
+      <div><span class="font-semibold text-red-500">Occupation:</span> {{ forms.occupation.data }}</div>
+
+      <div><span class="font-semibold text-red-500">State:</span> {{ forms.state.data|capfirst }}</div>
+      <div><span class="font-semibold text-red-500">City:</span> {{ forms.city.data|capfirst }}</div>
+
+      <div><span class="font-semibold text-red-500">Date of Birth:</span> {{ forms.date_of_birth.data }}</div>
+      <div><span class="font-semibold text-red-500">Blood Group:</span> {{ forms.blood_group.data }}</div>
+
+      <div class="md:col-span-2"><span class="font-semibold text-red-500">Address:</span> {{ forms.home_address.data }}</div>
+
+      <div><span class="font-semibold text-red-500">Last Donation:</span> {{ forms.last_donate_date.data }}</div>
+      <div><span class="font-semibold text-red-500">Disease:</span> {{ forms.any_disease.data|capfirst }}</div>
+
+      <div><span class="font-semibold text-red-500">Allergies:</span> {{ forms.allergies.data|capfirst }}</div>
+      <div><span class="font-semibold text-red-500">Cardiac:</span> {{ forms.cardiac.data|capfirst }}</div>
+
+      <div><span class="font-semibold text-red-500">Bleeding Disorder:</span> {{ forms.bleeding_disorder.data|capfirst }}</div>
+      <div><span class="font-semibold text-red-500">HIV / HCV / HBsAg:</span> {{ forms.hbsAg_hcv_hIV.data|capfirst }}</div>
+
+    </div>
+
+    <!-- Success Message -->
+    <div class="mt-8 text-center">
+      <p class="text-green-600 font-semibold text-lg">
+        ✅ {{ forms.name.data }} your registration was successful!
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

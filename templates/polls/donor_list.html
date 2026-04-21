@@ -1,0 +1,72 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}
+<title>Donor Details</title>
+{% endblock %}
+
+{% block contents %}
+
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card shadow-lg border-danger rounded-4">
+
+        <!-- Header -->
+        <div class="card-body text-center">
+          <h1 class="text-danger fw-bold">🩸 Blood Bank</h1>
+          <p class="text-muted">Donor Registration Details</p>
+        </div>
+
+        <hr class="m-0">
+
+        <!-- Details -->
+        <div class="card-body">
+          <div class="row g-3">
+
+            <div class="col-md-6"><b class="text-danger">Name:</b> {{ forms.name.data|capfirst }}</div>
+            <div class="col-md-6"><b class="text-danger">Father Name:</b> {{ forms.father_name.data|capfirst }}</div>
+
+            <div class="col-md-6"><b class="text-danger">Gender:</b> {{ forms.gender.data|capfirst }}</div>
+            <div class="col-md-6"><b class="text-danger">Email:</b> {{ forms.email.data }}</div>
+
+            <div class="col-md-6"><b class="text-danger">Phone:</b> {{ forms.phone_number.data }}</div>
+            <div class="col-md-6"><b class="text-danger">Occupation:</b> {{ forms.occupation.data }}</div>
+
+            <div class="col-md-6"><b class="text-danger">State:</b> {{ forms.state.data|capfirst }}</div>
+            <div class="col-md-6"><b class="text-danger">City:</b> {{ forms.city.data|capfirst }}</div>
+
+            <div class="col-md-6"><b class="text-danger">Date of Birth:</b> {{ forms.date_of_birth.data }}</div>
+            <div class="col-md-6"><b class="text-danger">Blood Group:</b> {{ forms.blood_group.data }}</div>
+
+            <div class="col-12"><b class="text-danger">Address:</b> {{ forms.home_address.data }}</div>
+
+            <div class="col-md-6"><b class="text-danger">Last Donation:</b> {{ forms.last_donate_date.data }}</div>
+            <div class="col-md-6"><b class="text-danger">Disease:</b> {{ forms.any_disease.data|capfirst }}</div>
+
+            <div class="col-md-6"><b class="text-danger">Allergies:</b> {{ forms.allergies.data|capfirst }}</div>
+            <div class="col-md-6"><b class="text-danger">Cardiac:</b> {{ forms.cardiac.data|capfirst }}</div>
+
+            <div class="col-md-6"><b class="text-danger">Bleeding Disorder:</b> {{ forms.bleeding_disorder.data|capfirst }}</div>
+            <div class="col-md-6"><b class="text-danger">HIV / HCV / HBsAg:</b> {{ forms.hbsAg_hcv_hIV.data|capfirst }}</div>
+
+          </div>
+
+          <!-- Success -->
+          <div class="text-center mt-4">
+            <p class="text-success fw-bold">
+              ✅ {{ forms.name.data }} your registration was successful!
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
